@@ -19,12 +19,12 @@ variable "public_subnets" {
 
 variable "private_subnets" {
     description = "A list of private subnets inside the VPC"
-    type = list(String)
+    type = list(string)
     default = []
 }
 
 variable "database_subnets" {
-    description "A list of database subnets"
+    description = "A list of database subnets"
     type = list(string)
     default = []
 }
@@ -36,9 +36,9 @@ variable "azs" {
 }
 
 variable "enable_dns_hostnames" {
-    description "Should be true to enable DNS hostnames in the VPC"
+    description = "Should be true to enable DNS hostnames in the VPC"
     type = bool
-    default = false
+    default = true
 }
 
 variable "enable_dns_support" {
@@ -50,7 +50,7 @@ variable "enable_dns_support" {
 
 variable "tags" {
     description = "A map of tags to add to all resources"
-    type = "map"
+    type = map
     default = {}
 }
 
