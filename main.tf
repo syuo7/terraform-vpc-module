@@ -211,27 +211,6 @@ resource "aws_route_table" "public" {
   )
 }
 
-#####################
-# Public route table
-#####################
-
-resource "aws_route_table" "private" {
-  count = length(var.azs)
-  vpc_id = aws_vpc.this.id
-  
-  route {
-    cidr_block = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.this.*.id[count.index]
-  }
-
-  tags = merge(
-    {
-      "Name" = format("%s-private-%s", var.name, var.azs[count.index])
-    },
-    var.tags
-  )
-}
-
 ######################
 # Private route table
 ######################
